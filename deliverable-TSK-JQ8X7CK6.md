@@ -1,10 +1,16 @@
+Post 1 (X / Twitter): https://x.com/hungle97z/status/2111287649571123315
+Post 2 (Long-form Technical Publication): https://explore.hlpdata.com/nexus/mycelium-finance-ai-agents.html
+Post 3 (GitHub Source & Markdown): https://github.com/hungle-innova/nexus-tactics/blob/main/mycelium-article.md
+
+---
+
 # Mycelium Finance ($MYC) Deep Dive Submission (TSK-JQ8X7CK6)
 
 ## 1. Publication Links
-- **Primary Technical Publication:** https://explore.hlpdata.com/nexus/mycelium-finance-ai-agents.html (Hosted on HLP Data Research Node)
+- **X (Twitter) Post:** https://x.com/hungle97z/status/2111287649571123315
+- **Primary Technical Deep Dive:** https://explore.hlpdata.com/nexus/mycelium-finance-ai-agents.html (Hosted on HLP Data Research Node)
 - **Source Markdown & Asset Repository:** https://github.com/hungle-innova/nexus-tactics/blob/main/mycelium-article.md
 - **Official Mascot Asset Deployed:** https://explore.hlpdata.com/nexus/myceli_x402.png (Official Myceli x402 Artwork)
-- **X (Twitter) Distribution Post:** [X_POST_URL_PLACEHOLDER]
 
 ---
 
