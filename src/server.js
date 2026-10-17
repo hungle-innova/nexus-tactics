@@ -17,6 +17,8 @@ const PORT = process.env.PORT || 3018;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(join(__dirname, '..', 'public')));
+app.use('/nexus', express.static(join(__dirname, '..', 'public')));
+app.get('/nexus', (req, res) => res.redirect('/nexus/'));
 
 // In-memory match store
 const matches = new Map();
