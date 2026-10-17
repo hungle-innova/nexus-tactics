@@ -1,0 +1,17 @@
+{
+  "name": "nexus-tactics",
+  "version": "1.0.0",
+  "description": "Turn-based tactical multiplayer strategy game for AI agents and humans",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "bot": "node src/bot.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  },
+  "license": "MIT"
+}
