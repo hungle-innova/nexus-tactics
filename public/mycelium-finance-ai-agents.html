@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under the Forest Floor: How AI Agents Read Solana Liquidity and Earn $MYC via MCP & x402</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1B1A17;
+      --card-bg: #24221D;
+      --border: #38352D;
+      --text-primary: #EDE0D4;
+      --text-muted: #A89F91;
+      --accent-green: #5C7057;
+      --living-green: #7A8E3A;
+      --warm-brown: #A9805A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 860px;
+      width: 100%;
+    }
+    header {
+      margin-bottom: 35px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 25px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(122, 142, 58, 0.2);
+      color: var(--living-green);
+      border: 1px solid var(--living-green);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+    .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .hero-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 25px 0 35px 0;
+      display: block;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin: 35px 0 15px 0;
+      border-left: 3px solid var(--living-green);
+      padding-left: 12px;
+    }
+    p { margin-bottom: 18px; color: var(--text-primary); font-size: 1.05rem; }
+    a { color: var(--living-green); text-decoration: none; border-bottom: 1px dashed var(--living-green); }
+    a:hover { opacity: 0.8; }
+    ul, ol { margin: 15px 0 25px 25px; }
+    li { margin-bottom: 8px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th { background: #2b2822; color: var(--text-primary); font-weight: 600; }
+    pre {
+      background: #11100E;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin: 20px 0;
+      color: #E2D9CF;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    .footer-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+      margin-top: 50px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">Ecosystem Deep Dive</div>
+    <h1>Under the Forest Floor: How AI Agents Read Solana Liquidity & Earn $MYC via MCP and x402</h1>
+    <div class="meta">
+      <div><strong>Author:</strong> HLP Data Research (@hunglp97)</div>
+      <div><strong>Protocol:</strong> <a href="https://www.myceliumfinance.com" target="_blank">Mycelium Finance</a> ($MYC)</div>
+      <div><strong>Date:</strong> October 17, 2026</div>
+    </div>
+  </header>
+
+  <img src="/nexus/myceli_x402.png" alt="Myceli, the Mycelium Finance mascot, carving x402 at a workbench" class="hero-img">
+
+  <p>In biological ecosystems, mycelium forms an intricate, subterranean web beneath the forest floor. Rather than competing in isolation, trees and plants use mycelial threads to trade nutrients, hedge against environmental stress, and build shared resilience. In decentralized finance, liquidity has traditionally been fragmented into isolated silos where each token battles alone for attention and pool depth.</p>
+
+  <p><strong><a href="https://www.myceliumfinance.com" target="_blank">Mycelium Finance</a></strong> translates this biological architecture onto Solana. Instead of maintaining single-pair pools, the protocol's core token—<strong>$MYC</strong>—is paired across a curated basket of projects spanning DeFi, Real World Assets (RWA), Artificial Intelligence, GameFi, and Memes. Every swap through connected Raydium and Orca pools routes value through this root network.</p>
+
+  <p>Crucially for engineers building autonomous AI systems, Mycelium Finance is among the first Solana protocols designed from day one to be machine-readable, equipping AI agents with a native Model Context Protocol (MCP) server and HTTP 402 micro-payment settlement.</p>
+
+  <h2>1. What the Machine Reads: Live Network Allocation</h2>
+
+  <p>To understand the root network, an agent does not need to scrape dynamic HTML or parse complex frontends. Calling the live endpoint <code>GET /api/mycelium-allocation</code> returns real-time pooled liquidity updated every 60 seconds.</p>
+
+  <p>As verified on-chain at block recording on October 17, 2026, the Mycelium Strategy actively manages <strong>$33,555.03 USD</strong> in verified paired liquidity distributed across 10 strategic Solana assets:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Asset / Project</th>
+        <th>Symbol</th>
+        <th>Sector</th>
+        <th>Pooled USD</th>
+        <th>Share (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Knots</td><td><code>$KNOTS</code></td><td>DeFi Infrastructure</td><td>$6,911.58</td><td>20.60%</td></tr>
+      <tr><td>Parcl</td><td><code>$PRCL</code></td><td>Real World Assets (RWA)</td><td>$4,974.22</td><td>14.82%</td></tr>
+      <tr><td>Kintara</td><td><code>$KINS</code></td><td>DeFi</td><td>$3,987.75</td><td>11.88%</td></tr>
+      <tr><td>Gable</td><td><code>$GABLE</code></td><td>Ecosystem</td><td>$3,627.56</td><td>10.81%</td></tr>
+      <tr><td>Solana</td><td><code>$SOL</code></td><td>Layer 1 Core</td><td>$3,428.02</td><td>10.22%</td></tr>
+      <tr><td>Streamflow</td><td><code>$STREAM</code></td><td>Token Vesting / Infra</td><td>$3,072.93</td><td>9.16%</td></tr>
+      <tr><td>Guacamole</td><td><code>$GUAC</code></td><td>Community / DeFi</td><td>$2,729.51</td><td>8.13%</td></tr>
+      <tr><td>Daydreams</td><td><code>$DREAMS</code></td><td>AI Agents</td><td>$2,596.67</td><td>7.74%</td></tr>
+      <tr><td>JubJub</td><td><code>$JUBJUB</code></td><td>GameFi</td><td>$2,111.94</td><td>6.29%</td></tr>
+      <tr><td>USD Coin</td><td><code>$USDC</code></td><td>Stablecoin</td><td>$114.85</td><td>0.34%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <strong>Verifiable On-Chain Distribution:</strong>
+    From the total minted supply of 1,000,000,000 $MYC, <strong>551,045,000 $MYC (55.10%)</strong> is programmatically time-locked in a public Streamflow contract (<code>FFodc8fN1Vbp8sTvpk2esRa3qGb7iVyYxDP5fGbJEeSN</code>). 
+    Of the tradable circulating supply (447.55M $MYC), <strong>379,011,634 $MYC (84.68%)</strong> sits directly inside liquidity pools, actively routing swaps and generating LP fees rather than languishing idle in private wallets.
+  </div>
+
+  <h2>2. Built for AI Agents: Streamable HTTP MCP & x402 Micropayments</h2>
+
+  <p>Modern agent frameworks (such as Claude Code, Cursor, and LangGraph) require structured, standardized tool discovery. Rather than relying on proprietary wrappers, Mycelium Finance exposes a native Streamable HTTP MCP server at <code>https://www.myceliumfinance.com/api/mcp</code>.</p>
+
+  <p>The MCP server provides 7 dedicated tools:</p>
+  <ul>
+    <li><code>get_mycelium_allocation</code> (Free): Live USD liquidity allocation across Solana ecosystem partners.</li>
+    <li><code>get_solana_top_performers</code> (Free): Leading Solana tokens by 7-day price momentum, showing where $ESF and partner tokens rank.</li>
+    <li><code>get_myc_token_info</code> (Free): Mint addresses, metadata, and brand assets for $MYC and staking token $ESF.</li>
+    <li><code>get_mycelium_distribution</code> (Free): Exact token accounting across trading, locked LP, and Streamflow contracts.</li>
+    <li><code>get_faucet_info</code> (Free): Live pricing and remaining allocation for the x402 token faucet.</li>
+    <li><code>get_mycelium_snapshot</code> (Paid - $0.05 USDC via x402): Bundled market snapshot. When an agent's Solana wallet makes its first payment, it automatically receives <strong>1,337 $MYC</strong> sent directly to its wallet address.</li>
+    <li><code>get_mycelium_history</code> (Paid - $0.01 USDC via x402): Comprehensive UTC daily historical records of Strategy liquidity and supply distributions.</li>
+  </ul>
+
+  <h2>3. How an Agent Pays & Collects: Zero-SOL Micropayments</h2>
+
+  <p>The defining breakthrough of the x402 standard (HTTP 402 Payment Required) on Solana is that autonomous agents do not need native $SOL gas to execute payments. When an agent requests a paid resource (such as <code>/api/x402/mycelium-snapshot</code>), the facilitator handles transaction execution while the agent's wallet only provides the signed $0.05 USDC payment payload.</p>
+
+  <p>Connecting an autonomous agent to the Mycelium MCP server in Python or Node.js requires only standard JSON-RPC over HTTP:</p>
+
+  <pre><code>// Example: Querying Mycelium MCP server with Node.js fetch
+const response = await fetch("https://www.myceliumfinance.com/api/mcp", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream"
+  },
+  body: JSON.stringify({
+    jsonrpc: "2.0",
+    id: 1,
+    method: "tools/call",
+    params: {
+      name: "get_mycelium_allocation",
+      arguments: {}
+    }
+  })
+});
+
+const data = await response.json();
+console.log("Mycelium Liquidity Data:", data.result.content[0].text);</code></pre>
+
+  <h2>4. Why It Matters for Developers and Traders</h2>
+
+  <p>For autonomous agents executing portfolio rebalancing, market intelligence, or cross-DEX routing, Mycelium Finance serves two simultaneous roles:</p>
+  <ol>
+    <li><strong>A Resilient Index Primitive:</strong> By holding $MYC or its staking companion $ESF, an agent gains diversified liquidity exposure across 10 distinct Solana ecosystems in a single asset.</li>
+    <li><strong>A Machine-Native Oracle:</strong> The protocol provides reliable, low-latency financial state through standardized MCP tools, rewarding participating autonomous agents with token allocations through its x402 faucet.</li>
+  </ol>
+
+  <p>Just as fungal mycelium quietly routes water and minerals to where trees need it most, Mycelium Finance routes capital through the Solana understory—laying down the economic rails for both human traders and autonomous software agents.</p>
+
+  <div class="footer-note">
+    <p>Official Website: <a href="https://www.myceliumfinance.com" target="_blank">https://www.myceliumfinance.com</a> · Developers: <a href="https://www.myceliumfinance.com/developers" target="_blank">https://www.myceliumfinance.com/developers</a></p>
+    <p>Created by an AI agent for a Taskmarket bounty.</p>
+  </div>
+</div>
+
+</body>
+</html>
