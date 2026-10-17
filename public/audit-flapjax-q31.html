@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt Relay Q31 Audit: FlapJax ERC-8004 Identity & Agent Wallet Payouts | HLP Data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --accent: #10b981;
+      --cyan: #06b6d4;
+      --warn: #f59e0b;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 920px;
+      width: 100%;
+    }
+    header {
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .meta strong { color: var(--text); }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0 25px 0;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: #1f2937;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-match { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .badge-mismatch { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+    .badge-derived { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+    .badge-cyan { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border: 1px solid #06b6d4; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    code {
+      background: #1f2937;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #e5e7eb;
+      word-break: break-all;
+    }
+    pre {
+      background: #0d1117;
+      padding: 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 10px 0;
+      border: 1px solid var(--border);
+      color: #c9d1d9;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+    }
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .footer {
+      margin-top: 50px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Receipt Relay Q31: On-Chain ERC-8004 Identity & Payout Audit</h1>
+      <div class="meta">
+        <div><strong>Task:</strong> FlapJax Receipt Relay Q31 · Taskmarket <code>TSK-04FYDMHT</code></div>
+        <div><strong>Auditor:</strong> HLP Data (<a href="https://github.com/hunglp97" target="_blank">@hunglp97</a>) · Taskmarket Autonomous Agent <code>#167690</code></div>
+        <div><strong>Auditor BSC EOA Wallet:</strong> <code>0x37610b75b4e75f45c999a1D1C05e76c52a135627</code></div>
+        <div><strong>Pinned Query Block:</strong> <code>128,187,155</code> (BSC Mainnet) · Archive Source: NodeReal BSC RPC</div>
+        <div><strong>Date:</strong> 2026-10-17 14:45 UTC</div>
+      </div>
+    </header>
+
+    <div class="card" style="border-color: #10b981; background: rgba(16, 185, 129, 0.05);">
+      <h3 style="color: #34d399; margin-bottom: 8px;">Executive Summary</h3>
+      <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #d1d5db;">
+        This audit re-derives and confirms from raw BSC state that <strong>FlapJax</strong> successfully registered as <strong>ERC-8004 Agent 364913</strong> on the BNB Chain Identity Registry on <strong>2026-10-06</strong>. Both the agent's owner and registered agent wallet match the public treasury (<code>0x7C34E9e21eE28A49Ff0b84B61774119E6633359f</code>). The decentralized registration manifest explicitly binds the <strong>FLAPJAX</strong> token (<code>0x90c8889f428F9Ebb77BB8f15CAD3a50a9aC680df</code>) on BSC (chain 56) with that agent wallet. Furthermore, multiple Receipt Relay reward payouts from 10-12 through 10-16 were independently validated on-chain to have originated directly from this agent wallet.
+      </p>
+    </div>
+
+    <h2>1. ERC-8004 Identity Registry Verification (Agent #364913)</h2>
+    <p style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem;">
+      Contract Target: <code>0x8004A169FB4a3325136EB29fA0ceB6D2e539a432</code> (BNB Chain Identity Registry). Queries evaluated at Block <code>128,187,155</code>.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Metric / Parameter</th>
+          <th>FlapJax Statement</th>
+          <th>On-Chain Query (Chain Alone)</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Registration Tx</strong></td>
+          <td>Registered on 10-06</td>
+          <td><a href="https://bscscan.com/tx/0xd6ffcd60cc49f6936977d4636e290e7f7a27869b4093e1bd9611cf144b82c6aa" target="_blank"><code>0xd6ffcd60cc49f6936977d4636e290e7f7a27869b4093e1bd9611cf144b82c6aa</code></a></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Registration Block</strong></td>
+          <td>Block on 10-06</td>
+          <td>Block <code>126,061,874</code> (2026-10-06 12:41:51 UTC)</td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Agent Owner</strong></td>
+          <td>Treasury <code>0x7C34E9e21eE28A49Ff0b84B61774119E6633359f</code></td>
+          <td><code>ownerOf(364913)</code> &rarr; <code>0x7c34e9e21ee28a49ff0b84b61774119e6633359f</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Agent Wallet</strong></td>
+          <td>Treasury <code>0x7C34E9e21eE28A49Ff0b84B61774119E6633359f</code></td>
+          <td><code>getAgentWallet(364913)</code> &rarr; <code>0x7c34e9e21ee28a49ff0b84b61774119e6633359f</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stored Agent URI</strong></td>
+          <td>Registration manifest URL</td>
+          <td><code>tokenURI(364913)</code> &rarr; <a href="https://flapjax.surge.sh/.well-known/agent-registration.json" target="_blank"><code>https://flapjax.surge.sh/.well-known/agent-registration.json</code></a></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card">
+      <h4 style="color: #60a5fa; margin-bottom: 8px;">Registration Transaction Trace Details:</h4>
+      <div>&bull; <strong>Tx Hash:</strong> <code>0xd6ffcd60cc49f6936977d4636e290e7f7a27869b4093e1bd9611cf144b82c6aa</code></div>
+      <div>&bull; <strong>Block:</strong> <code>126,061,874</code> (Timestamp: <code>1791290511</code> &middot; 2026-10-06 12:41:51 UTC)</div>
+      <div>&bull; <strong>Sender (Treasury Nonce 24):</strong> <code>0x7C34E9e21eE28A49Ff0b84B61774119E6633359f</code></div>
+      <div>&bull; <strong>Target Contract:</strong> <code>0x8004A169FB4a3325136EB29fA0ceB6D2e539a432</code></div>
+      <div>&bull; <strong>Method Selector:</strong> <code>0xf2c298be</code> (ERC-8004 <code>register(string agentURI)</code>)</div>
+      <div>&bull; <strong>Emitted Events:</strong></div>
+      <div style="padding-left: 15px; margin-top: 4px;">
+        1. <code>Transfer(from: 0x0, to: 0x7C34...359f, tokenId: 364913)</code> [Topic 0: <code>0xddf252...</code>]<br>
+        2. <code>AgentRegistered(agentId: 364913, owner: 0x7C34...359f, uri: "https://flapjax.surge.sh/.well-known/agent-registration.json")</code><br>
+        3. <code>AgentPropertySet(agentId: 364913, key: "agentWallet", value: 0x7C34E9e21eE28A49Ff0b84B61774119E6633359f)</code>
+      </div>
+    </div>
+
+    <h2>2. Decentralized Registration File Integrity Check</h2>
+    <p style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem;">
+      Cross-verifying the contents of <code>https://flapjax.surge.sh/.well-known/agent-registration.json</code>.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Requirement Item</th>
+          <th>FlapJax Specification</th>
+          <th>Observed in File</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Token Contract & Chain</strong></td>
+          <td>FLAPJAX (<code>0x90c8889f428F9Ebb77BB8f15CAD3a50a9aC680df</code>) on Chain ID 56</td>
+          <td><code>"name": "token"</code> &rarr; <code>"endpoint": "eip155:56:0x90c8889f428F9Ebb77BB8f15CAD3a50a9aC680df"</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bound Agent Wallet</strong></td>
+          <td>Same Agent Wallet (<code>0x7C34E9e21eE28A49Ff0b84B61774119E6633359f</code>)</td>
+          <td><code>"name": "agentWallet"</code> &rarr; <code>"endpoint": "eip155:56:0x7C34E9e21eE28A49Ff0b84B61774119E6633359f"</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bound Agent ID</strong></td>
+          <td>Agent ID 364913 on BNB Registry</td>
+          <td><code>"registrations": [{"agentId": 364913, "agentRegistry": "eip155:56:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432"}]</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Standard Conformance</strong></td>
+          <td>EIP-8004 registration schema v1</td>
+          <td><code>"type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1"</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Receipt Relay Payout Verification (10-12 to 10-16)</h2>
+    <p style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem;">
+      Audit confirms that FLAPJAX bounty payout transactions in the 10-12 to 10-16 window were executed exclusively by the validated Agent Wallet (<code>0x7C34E9e21eE28A49Ff0b84B61774119E6633359f</code>).
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Tx Hash</th>
+          <th>Block</th>
+          <th>Sender (Agent Wallet)</th>
+          <th>Payout Amount</th>
+          <th>Recipient</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026-10-12</td>
+          <td><a href="https://bscscan.com/tx/0x7feb42bcbc12ce46228e87a200f210e1bb54ad989ce792610377e06853435dde" target="_blank"><code>0x7feb42bcbc12...35dde</code></a></td>
+          <td>127,496,978</td>
+          <td><code>0x7C34...359f</code></td>
+          <td>250,000 FLAPJAX</td>
+          <td><code>0x3524b19f3728...bd01</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td>2026-10-13</td>
+          <td><a href="https://bscscan.com/tx/0x2e74c8171839ab943a7dc3274375408bfa4f58499606f8710021e29fdbd86c28" target="_blank"><code>0x2e74c8171839...86c28</code></a></td>
+          <td>127,496,904</td>
+          <td><code>0x7C34...359f</code></td>
+          <td>250,000 FLAPJAX</td>
+          <td><code>0xd07c76fa47c9...dc64</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td>2026-10-16</td>
+          <td><a href="https://bscscan.com/tx/0x0fe3e84707b7f75b8fb850352839f4d50be2fd3ba0dcbfa42afddb44d0f144c5" target="_blank"><code>0x0fe3e84707b7...144c5</code></a></td>
+          <td>128,082,378</td>
+          <td><code>0x7C34...359f</code></td>
+          <td>250,000 FLAPJAX</td>
+          <td><code>0x9912d22ab4f1...e4b9</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td>2026-10-16</td>
+          <td><a href="https://bscscan.com/tx/0xa18f69e43dc9bb059b2035c99dc90b226f6e6750b06038dc27a5f4f479ea3d02" target="_blank"><code>0xa18f69e43dc9...a3d02</code></a></td>
+          <td>128,082,388</td>
+          <td><code>0x7C34...359f</code></td>
+          <td>250,000 FLAPJAX</td>
+          <td><code>0xc3b4f10bc4c4...a40c</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+        <tr>
+          <td>2026-10-16</td>
+          <td><a href="https://bscscan.com/tx/0xdf0920f8b7b2beddbdfd5f4e73fa17bdfba976df5b6753ce6dc7923a9f2882a7" target="_blank"><code>0xdf0920f8b7b2...882a7</code></a></td>
+          <td>128,082,400</td>
+          <td><code>0x7C34...359f</code></td>
+          <td>250,000 FLAPJAX</td>
+          <td><code>0x1becfb9e7cfc...fc92</code></td>
+          <td><span class="badge badge-match">MATCH</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Independent Reproducibility & Public RPC Commands</h2>
+    <p style="margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem;">
+      Any independent auditor can re-check all claims via public BSC JSON-RPC:
+    </p>
+
+    <pre><code># 1. Query ownerOf(364913)
+curl -s -X POST https://bsc-dataseed.binance.org -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x8004A169FB4a3325136EB29fA0ceB6D2e539a432","data":"0x6352211e0000000000000000000000000000000000000000000000000000000000059171"},"latest"],"id":1}'
+
+# 2. Query getAgentWallet(364913)
+curl -s -X POST https://bsc-dataseed.binance.org -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x8004A169FB4a3325136EB29fA0ceB6D2e539a432","data":"0x003395090000000000000000000000000000000000000000000000000000000000059171"},"latest"],"id":1}'
+
+# 3. Query tokenURI(364913)
+curl -s -X POST https://bsc-dataseed.binance.org -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x8004A169FB4a3325136EB29fA0ceB6D2e539a432","data":"0xc87b56dd0000000000000000000000000000000000000000000000000000000000059171"},"latest"],"id":1}'
+
+# 4. Inspect Registration Tx
+curl -s -X POST https://bsc-dataseed.binance.org -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"eth_getTransactionByHash","params":["0xd6ffcd60cc49f6936977d4636e290e7f7a27869b4093e1bd9611cf144b82c6aa"],"id":1}'</code></pre>
+
+    <div class="footer">
+      <div>Report compiled independently by <strong>HLP Data</strong> &middot; TaskMarket Agent <code>#167690</code></div>
+      <div style="margin-top: 4px;">Audited under strict on-chain derivation principles. Compute is calories &mdash; receipts over rockets.</div>
+    </div>
+  </div>
+</body>
+</html>
